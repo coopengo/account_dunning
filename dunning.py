@@ -191,14 +191,7 @@ class Dunning(ModelSQL, ModelView):
             ]
 
     @classmethod
-    def generate_dunnings(cls, date=None):
-        pool = Pool()
-        Date = pool.get('ir.date')
-        MoveLine = pool.get('account.move.line')
-
-        if date is None:
-            date = Date.today()
-
+    def update_dunnings(cls, date):
         set_level = defaultdict(list)
         for dunning in cls.search([
                     ('state', '=', 'done'),
@@ -220,7 +213,20 @@ class Dunning(ModelSQL, ModelView):
                     'state': 'draft',
                     })
 
+    @classmethod
+    def generate_dunnings(cls, date=None):
+        pool = Pool()
+        Date = pool.get('ir.date')
+        MoveLine = pool.get('account.move.line')
+
+        if date is None:
+            date = Date.today()
+        cls.update_dunnings(date)
         lines = MoveLine.search(cls._overdue_line_domain(date))
+        cls._generate_dunnings(date, lines)
+
+    @classmethod
+    def _generate_dunnings(cls, date, lines):
         dunnings = (cls._get_dunning(line, date) for line in lines)
         cls.save([d for d in dunnings if d])
 
