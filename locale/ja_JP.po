@@ -106,12 +106,12 @@ msgctxt "field:account.dunning.level,create_uid:"
 msgid "Create User"
 msgstr ""
 
-msgctxt "field:account.dunning.level,days:"
-msgid "Number of Overdue Days"
-msgstr ""
-
 msgctxt "field:account.dunning.level,id:"
 msgid "ID"
+msgstr ""
+
+msgctxt "field:account.dunning.level,overdue:"
+msgid "Overdue"
 msgstr ""
 
 msgctxt "field:account.dunning.level,procedure:"
@@ -170,13 +170,15 @@ msgctxt "field:account.dunning.process.start,id:"
 msgid "ID"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.move.line,dunnings:"
 msgid "Dunnings"
-msgstr ""
+msgstr "Dunnings"
 
+#, fuzzy
 msgctxt "field:party.party,dunning_procedure:"
 msgid "Dunning Procedure"
-msgstr ""
+msgstr "Dunning Procedures"
 
 msgctxt "model:account.dunning,name:"
 msgid "Account Dunning"
@@ -200,115 +202,88 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_dunning_form"
 msgid "Dunnings"
-msgstr ""
+msgstr "Dunnings"
 
 msgctxt "model:ir.action,name:act_dunning_party"
 msgid "Dunnings"
-msgstr ""
+msgstr "Dunnings"
 
 msgctxt "model:ir.action,name:act_dunning_procedure_form"
 msgid "Dunning Procedures"
-msgstr ""
+msgstr "Dunning Procedures"
 
 msgctxt "model:ir.action,name:wizard_dunning_create"
 msgid "Create Dunnings"
-msgstr ""
+msgstr "Create Dunnings"
 
 msgctxt "model:ir.action,name:wizard_dunning_process"
 msgid "Process Dunning"
-msgstr ""
+msgstr "Process Dunning"
 
 msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_all"
 msgid "All"
-msgstr ""
+msgstr "All"
 
 msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_done"
 msgid "Done"
-msgstr ""
+msgstr "Done"
 
 msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_draft"
 msgid "Draft"
-msgstr ""
+msgstr "Draft"
 
 msgctxt "model:ir.ui.menu,name:menu_dunning_configuration"
 msgid "Dunnings"
-msgstr ""
+msgstr "Dunnings"
 
 msgctxt "model:ir.ui.menu,name:menu_dunning_create"
 msgid "Create Dunnings"
-msgstr ""
+msgstr "Create Dunnings"
 
 msgctxt "model:ir.ui.menu,name:menu_dunning_form"
 msgid "Dunnings"
-msgstr ""
+msgstr "Dunnings"
 
 msgctxt "model:ir.ui.menu,name:menu_dunning_procedure_form"
 msgid "Dunning Procedures"
-msgstr ""
+msgstr "Dunning Procedures"
 
 msgctxt "model:ir.ui.menu,name:menu_dunnings"
 msgid "Dunnings"
-msgstr ""
+msgstr "Dunnings"
 
 msgctxt "model:res.group,name:group_dunning"
 msgid "Dunning"
-msgstr ""
+msgstr "Dunning"
 
+#, fuzzy
 msgctxt "selection:account.dunning,state:"
 msgid "Done"
-msgstr ""
+msgstr "Done"
 
+#, fuzzy
 msgctxt "selection:account.dunning,state:"
 msgid "Draft"
-msgstr ""
+msgstr "Draft"
 
+#, fuzzy
 msgctxt "view:account.configuration:"
 msgid "Dunning"
-msgstr ""
-
-msgctxt "view:account.dunning.create.start:"
-msgid "Create Dunning"
-msgstr ""
+msgstr "Dunning"
 
 msgctxt "view:account.dunning.create.start:"
 msgid "Create Dunning for date"
 msgstr ""
 
-msgctxt "view:account.dunning.level:"
-msgid "Dunning Level"
-msgstr ""
-
-msgctxt "view:account.dunning.level:"
-msgid "dunning levels"
-msgstr ""
-
-msgctxt "view:account.dunning.procedure:"
-msgid "Dunning Procedure"
-msgstr ""
-
-msgctxt "view:account.dunning.procedure:"
-msgid "Dunning Procedures"
-msgstr ""
-
-msgctxt "view:account.dunning.process.start:"
-msgid "Process Dunning"
-msgstr ""
-
+#, fuzzy
 msgctxt "view:account.dunning.process.start:"
 msgid "Process Dunning?"
-msgstr ""
+msgstr "Process Dunning"
 
-msgctxt "view:account.dunning:"
-msgid "Dunning"
-msgstr ""
-
-msgctxt "view:account.dunning:"
-msgid "Dunnings"
-msgstr ""
-
+#, fuzzy
 msgctxt "view:party.party:"
 msgid "Dunning"
-msgstr ""
+msgstr "Dunning"
 
 msgctxt "wizard_button:account.dunning.create,start,create_:"
 msgid "Create"

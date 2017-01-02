@@ -4,11 +4,11 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.dunning:"
 msgid "Line can be used only once on dunning."
-msgstr ""
+msgstr "La línea puede ser utilizada sólo una vez en el cobro."
 
 msgctxt "field:account.configuration,default_dunning_procedure:"
 msgid "Default Dunning Procedure"
-msgstr ""
+msgstr "Procedimiento de cobro por defecto"
 
 msgctxt "field:account.dunning,active:"
 msgid "Active"
@@ -20,7 +20,7 @@ msgstr ""
 
 msgctxt "field:account.dunning,amount_second_currency:"
 msgid "Amount Second Currency"
-msgstr ""
+msgstr "Importe en moneda secundaria"
 
 msgctxt "field:account.dunning,blocked:"
 msgid "Blocked"
@@ -36,7 +36,7 @@ msgstr ""
 
 msgctxt "field:account.dunning,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 msgctxt "field:account.dunning,currency_digits:"
 msgid "Currency Digits"
@@ -52,11 +52,11 @@ msgstr ""
 
 msgctxt "field:account.dunning,line:"
 msgid "Line"
-msgstr ""
+msgstr "Línea"
 
 msgctxt "field:account.dunning,maturity_date:"
 msgid "Maturity Date"
-msgstr ""
+msgstr "Fecha de vencimiento"
 
 msgctxt "field:account.dunning,party:"
 msgid "Party"
@@ -88,7 +88,7 @@ msgstr ""
 
 msgctxt "field:account.dunning,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
 msgctxt "field:account.dunning.create.start,date:"
 msgid "Date"
@@ -104,14 +104,14 @@ msgstr ""
 
 msgctxt "field:account.dunning.level,create_uid:"
 msgid "Create User"
-msgstr ""
-
-msgctxt "field:account.dunning.level,days:"
-msgid "Number of Overdue Days"
-msgstr ""
+msgstr "Creado por usuario"
 
 msgctxt "field:account.dunning.level,id:"
 msgid "ID"
+msgstr ""
+
+msgctxt "field:account.dunning.level,overdue:"
+msgid "Overdue"
 msgstr ""
 
 msgctxt "field:account.dunning.level,procedure:"
@@ -132,7 +132,7 @@ msgstr ""
 
 msgctxt "field:account.dunning.level,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
 msgctxt "field:account.dunning.procedure,create_date:"
 msgid "Create Date"
@@ -140,7 +140,7 @@ msgstr ""
 
 msgctxt "field:account.dunning.procedure,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 msgctxt "field:account.dunning.procedure,id:"
 msgid "ID"
@@ -164,7 +164,7 @@ msgstr ""
 
 msgctxt "field:account.dunning.procedure,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
 msgctxt "field:account.dunning.process.start,id:"
 msgid "ID"
@@ -172,51 +172,51 @@ msgstr ""
 
 msgctxt "field:account.move.line,dunnings:"
 msgid "Dunnings"
-msgstr ""
+msgstr "Cobros"
 
 msgctxt "field:party.party,dunning_procedure:"
 msgid "Dunning Procedure"
-msgstr ""
+msgstr "Procedimiento de cobro"
 
 msgctxt "model:account.dunning,name:"
 msgid "Account Dunning"
-msgstr ""
+msgstr "Cobro contable"
 
 msgctxt "model:account.dunning.create.start,name:"
 msgid "Create Account Dunning"
-msgstr ""
+msgstr "Crear cobro contable"
 
 msgctxt "model:account.dunning.level,name:"
 msgid "Account Dunning Level"
-msgstr ""
+msgstr "Nivel de cobro contable"
 
 msgctxt "model:account.dunning.procedure,name:"
 msgid "Account Dunning Procedure"
-msgstr ""
+msgstr "Procedimiento de cobro contable"
 
 msgctxt "model:account.dunning.process.start,name:"
 msgid "Create Account Dunning"
-msgstr ""
+msgstr "Crear cobro contable"
 
 msgctxt "model:ir.action,name:act_dunning_form"
 msgid "Dunnings"
-msgstr ""
+msgstr "Cobros"
 
 msgctxt "model:ir.action,name:act_dunning_party"
 msgid "Dunnings"
-msgstr ""
+msgstr "Cobros"
 
 msgctxt "model:ir.action,name:act_dunning_procedure_form"
 msgid "Dunning Procedures"
-msgstr ""
+msgstr "Procedimientos de cobro"
 
 msgctxt "model:ir.action,name:wizard_dunning_create"
 msgid "Create Dunnings"
-msgstr ""
+msgstr "Crear cobros"
 
 msgctxt "model:ir.action,name:wizard_dunning_process"
 msgid "Process Dunning"
-msgstr ""
+msgstr "Procesar cobro"
 
 msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_all"
 msgid "All"
@@ -224,7 +224,7 @@ msgstr ""
 
 msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_done"
 msgid "Done"
-msgstr ""
+msgstr "Realizado"
 
 msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_draft"
 msgid "Draft"
@@ -232,31 +232,31 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_dunning_configuration"
 msgid "Dunnings"
-msgstr ""
+msgstr "Cobranzas"
 
 msgctxt "model:ir.ui.menu,name:menu_dunning_create"
 msgid "Create Dunnings"
-msgstr ""
+msgstr "Crear cobros"
 
 msgctxt "model:ir.ui.menu,name:menu_dunning_form"
 msgid "Dunnings"
-msgstr ""
+msgstr "Cobros"
 
 msgctxt "model:ir.ui.menu,name:menu_dunning_procedure_form"
 msgid "Dunning Procedures"
-msgstr ""
+msgstr "Procedimientos de cobro"
 
 msgctxt "model:ir.ui.menu,name:menu_dunnings"
 msgid "Dunnings"
-msgstr ""
+msgstr "Cobranzas"
 
 msgctxt "model:res.group,name:group_dunning"
 msgid "Dunning"
-msgstr ""
+msgstr "Cobranza"
 
 msgctxt "selection:account.dunning,state:"
 msgid "Done"
-msgstr ""
+msgstr "Realizado"
 
 msgctxt "selection:account.dunning,state:"
 msgid "Draft"
@@ -264,51 +264,19 @@ msgstr ""
 
 msgctxt "view:account.configuration:"
 msgid "Dunning"
-msgstr ""
-
-msgctxt "view:account.dunning.create.start:"
-msgid "Create Dunning"
-msgstr ""
+msgstr "Cobranzas"
 
 msgctxt "view:account.dunning.create.start:"
 msgid "Create Dunning for date"
-msgstr ""
-
-msgctxt "view:account.dunning.level:"
-msgid "Dunning Level"
-msgstr ""
-
-msgctxt "view:account.dunning.level:"
-msgid "dunning levels"
-msgstr ""
-
-msgctxt "view:account.dunning.procedure:"
-msgid "Dunning Procedure"
-msgstr ""
-
-msgctxt "view:account.dunning.procedure:"
-msgid "Dunning Procedures"
-msgstr ""
-
-msgctxt "view:account.dunning.process.start:"
-msgid "Process Dunning"
-msgstr ""
+msgstr "Crear cobro para la fecha"
 
 msgctxt "view:account.dunning.process.start:"
 msgid "Process Dunning?"
-msgstr ""
-
-msgctxt "view:account.dunning:"
-msgid "Dunning"
-msgstr ""
-
-msgctxt "view:account.dunning:"
-msgid "Dunnings"
-msgstr ""
+msgstr "¿Procesar cobro?"
 
 msgctxt "view:party.party:"
 msgid "Dunning"
-msgstr ""
+msgstr "Cobro"
 
 msgctxt "wizard_button:account.dunning.create,start,create_:"
 msgid "Create"

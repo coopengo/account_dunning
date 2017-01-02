@@ -1,12 +1,14 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from collections import defaultdict
+import datetime
 
 from sql import Null
-from sql.conditionals import Case
 
-from trytond.model import Model, ModelView, ModelSQL, fields, Unique
+from trytond.model import Model, ModelView, ModelSQL, fields, Unique, \
+    sequence_ordered
 from trytond.pyson import If, Eval
+from trytond import backend
 from trytond.transaction import Transaction
 from trytond.wizard import Wizard, StateView, StateAction, StateTransition, \
     Button
@@ -24,32 +26,42 @@ class Procedure(ModelSQL, ModelView):
     levels = fields.One2Many('account.dunning.level', 'procedure', 'Levels')
 
 
-class Level(ModelSQL, ModelView):
+class Level(sequence_ordered(), ModelSQL, ModelView):
     'Account Dunning Level'
     __name__ = 'account.dunning.level'
     _rec_name = 'procedure'
-    sequence = fields.Integer('Sequence')
     procedure = fields.Many2One('account.dunning.procedure', 'Procedure',
         required=True, select=True)
-    days = fields.Integer('Number of Overdue Days')
+    overdue = fields.TimeDelta('Overdue')
 
     @classmethod
-    def __setup__(cls):
-        super(Level, cls).__setup__()
-        cls._order.insert(0, ('sequence', 'ASC'))
+    def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
+        cursor = Transaction().connection.cursor()
+        table = TableHandler(cls, module_name)
+        sql_table = cls.__table__()
 
-    @staticmethod
-    def order_sequence(tables):
-        table, _ = tables[None]
-        return [Case((table.sequence == Null, 0), else_=1), table.sequence]
+        super(Level, cls).__register__(module_name)
+
+        # Migration from 4.0: change days into timedelta overdue
+        if table.column_exist('days'):
+            cursor.execute(*sql_table.select(sql_table.id, sql_table.days,
+                    where=sql_table.days != Null))
+            for id_, days in cursor.fetchall():
+                overdue = datetime.timedelta(days)
+                cursor.execute(*sql_table.update(
+                        [sql_table.overdue],
+                        [overdue],
+                        where=sql_table.id == id_))
+            table.drop_column('days')
 
     def get_rec_name(self, name):
         return '%s@%s' % (self.procedure.levels.index(self),
             self.procedure.rec_name)
 
     def test(self, line, date):
-        if self.days is not None:
-            return (date - line.maturity_date).days >= self.days
+        if self.overdue is not None:
+            return (date - line.maturity_date) >= self.overdue
 
 _STATES = {
     'readonly': Eval('state') != 'draft',

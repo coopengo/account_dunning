@@ -4,43 +4,43 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.dunning:"
 msgid "Line can be used only once on dunning."
-msgstr "La línea puede ser utilizada sólo una vez en el cobro."
+msgstr "Postavka se lahko na izterjavi uporabi samo enkrat."
 
 msgctxt "field:account.configuration,default_dunning_procedure:"
 msgid "Default Dunning Procedure"
-msgstr "Procedimiento de cobro por defecto"
+msgstr "Privzet postopek izterjave"
 
 msgctxt "field:account.dunning,active:"
 msgid "Active"
-msgstr "Activo"
+msgstr "Aktivno"
 
 msgctxt "field:account.dunning,amount:"
 msgid "Amount"
-msgstr "Importe"
+msgstr "Znesek"
 
 msgctxt "field:account.dunning,amount_second_currency:"
 msgid "Amount Second Currency"
-msgstr "Importe en moneda secundaria"
+msgstr "Znesek v drugi valuti"
 
 msgctxt "field:account.dunning,blocked:"
 msgid "Blocked"
-msgstr "Bloqueada"
+msgstr "Zamrznjeno"
 
 msgctxt "field:account.dunning,company:"
 msgid "Company"
-msgstr "Empresa"
+msgstr "Družba"
 
 msgctxt "field:account.dunning,create_date:"
 msgid "Create Date"
-msgstr "Fecha de creación"
+msgstr "Izdelano"
 
 msgctxt "field:account.dunning,create_uid:"
 msgid "Create User"
-msgstr "Creado por usuario"
+msgstr "Izdelal"
 
 msgctxt "field:account.dunning,currency_digits:"
 msgid "Currency Digits"
-msgstr "Decimales de moneda"
+msgstr "Decimalke"
 
 msgctxt "field:account.dunning,id:"
 msgid "ID"
@@ -48,51 +48,51 @@ msgstr "ID"
 
 msgctxt "field:account.dunning,level:"
 msgid "Level"
-msgstr "Nivel"
+msgstr "Stopnja"
 
 msgctxt "field:account.dunning,line:"
 msgid "Line"
-msgstr "Línea"
+msgstr "Postavka"
 
 msgctxt "field:account.dunning,maturity_date:"
 msgid "Maturity Date"
-msgstr "Fecha de vencimiento"
+msgstr "Datum dospelosti"
 
 msgctxt "field:account.dunning,party:"
 msgid "Party"
-msgstr "Tercero"
+msgstr "Partner"
 
 msgctxt "field:account.dunning,procedure:"
 msgid "Procedure"
-msgstr "Procedimiento"
+msgstr "Postopek"
 
 msgctxt "field:account.dunning,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr "Ime"
 
 msgctxt "field:account.dunning,second_currency:"
 msgid "Second Currency"
-msgstr "Segunda moneda"
+msgstr "Druga valuta"
 
 msgctxt "field:account.dunning,second_currency_digits:"
 msgid "Second Currency Digits"
-msgstr "Decimales de segunda moneda"
+msgstr "Decimalke druge valute"
 
 msgctxt "field:account.dunning,state:"
 msgid "State"
-msgstr "Estado"
+msgstr "Stanje"
 
 msgctxt "field:account.dunning,write_date:"
 msgid "Write Date"
-msgstr "Fecha de modificación"
+msgstr "Zapisano"
 
 msgctxt "field:account.dunning,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr "Zapisal"
 
 msgctxt "field:account.dunning.create.start,date:"
 msgid "Date"
-msgstr "Fecha"
+msgstr "Datum"
 
 msgctxt "field:account.dunning.create.start,id:"
 msgid "ID"
@@ -100,47 +100,47 @@ msgstr "ID"
 
 msgctxt "field:account.dunning.level,create_date:"
 msgid "Create Date"
-msgstr "Fecha de creación"
+msgstr "Izdelano"
 
 msgctxt "field:account.dunning.level,create_uid:"
 msgid "Create User"
-msgstr "Creado por usuario"
-
-msgctxt "field:account.dunning.level,days:"
-msgid "Number of Overdue Days"
-msgstr "Número de días de atraso"
+msgstr "Izdelal"
 
 msgctxt "field:account.dunning.level,id:"
 msgid "ID"
 msgstr "ID"
 
+msgctxt "field:account.dunning.level,overdue:"
+msgid "Overdue"
+msgstr ""
+
 msgctxt "field:account.dunning.level,procedure:"
 msgid "Procedure"
-msgstr "Procedimiento"
+msgstr "Postopek"
 
 msgctxt "field:account.dunning.level,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr "Ime"
 
 msgctxt "field:account.dunning.level,sequence:"
 msgid "Sequence"
-msgstr "Secuencia"
+msgstr "Zap.št."
 
 msgctxt "field:account.dunning.level,write_date:"
 msgid "Write Date"
-msgstr "Fecha de modificación"
+msgstr "Zapisano"
 
 msgctxt "field:account.dunning.level,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr "Zapisal"
 
 msgctxt "field:account.dunning.procedure,create_date:"
 msgid "Create Date"
-msgstr "Fecha de creación"
+msgstr "Izdelano"
 
 msgctxt "field:account.dunning.procedure,create_uid:"
 msgid "Create User"
-msgstr "Creado por usuario"
+msgstr "Izdelal"
 
 msgctxt "field:account.dunning.procedure,id:"
 msgid "ID"
@@ -148,23 +148,23 @@ msgstr "ID"
 
 msgctxt "field:account.dunning.procedure,levels:"
 msgid "Levels"
-msgstr "Niveles"
+msgstr "Stopnje"
 
 msgctxt "field:account.dunning.procedure,name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr "Naziv"
 
 msgctxt "field:account.dunning.procedure,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr "Ime"
 
 msgctxt "field:account.dunning.procedure,write_date:"
 msgid "Write Date"
-msgstr "Fecha de modificación"
+msgstr "Zapisano"
 
 msgctxt "field:account.dunning.procedure,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr "Zapisal"
 
 msgctxt "field:account.dunning.process.start,id:"
 msgid "ID"
@@ -172,156 +172,124 @@ msgstr "ID"
 
 msgctxt "field:account.move.line,dunnings:"
 msgid "Dunnings"
-msgstr "Cobros"
+msgstr "Izterjave"
 
 msgctxt "field:party.party,dunning_procedure:"
 msgid "Dunning Procedure"
-msgstr "Procedimiento de cobro"
+msgstr "Postopek izterjave"
 
 msgctxt "model:account.dunning,name:"
 msgid "Account Dunning"
-msgstr "Cobro contable"
+msgstr "Izterjava"
 
 msgctxt "model:account.dunning.create.start,name:"
 msgid "Create Account Dunning"
-msgstr "Crear cobro contable"
+msgstr "Izdelava izterjave"
 
 msgctxt "model:account.dunning.level,name:"
 msgid "Account Dunning Level"
-msgstr "Nivel de cobro contable"
+msgstr "Stopnja izterjave"
 
 msgctxt "model:account.dunning.procedure,name:"
 msgid "Account Dunning Procedure"
-msgstr "Procedimiento de cobro contable"
+msgstr "Postopek izterjave"
 
 msgctxt "model:account.dunning.process.start,name:"
 msgid "Create Account Dunning"
-msgstr "Crear cobro contable"
+msgstr "Obdelava izterjave"
 
 msgctxt "model:ir.action,name:act_dunning_form"
 msgid "Dunnings"
-msgstr "Cobros"
+msgstr "Izterjave"
 
 msgctxt "model:ir.action,name:act_dunning_party"
 msgid "Dunnings"
-msgstr "Cobros"
+msgstr "Izterjave"
 
 msgctxt "model:ir.action,name:act_dunning_procedure_form"
 msgid "Dunning Procedures"
-msgstr "Procedimientos de cobro"
+msgstr "Postopki izterjav"
 
 msgctxt "model:ir.action,name:wizard_dunning_create"
 msgid "Create Dunnings"
-msgstr "Crear cobros"
+msgstr "Izdelava izterjav"
 
 msgctxt "model:ir.action,name:wizard_dunning_process"
 msgid "Process Dunning"
-msgstr "Procesar cobro"
+msgstr "Obdelava izterjav"
 
 msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_all"
 msgid "All"
-msgstr "Todo"
+msgstr "Vse"
 
 msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_done"
 msgid "Done"
-msgstr "Realizado"
+msgstr "Zaključeno"
 
 msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_draft"
 msgid "Draft"
-msgstr "Borrador"
+msgstr "Priprava"
 
 msgctxt "model:ir.ui.menu,name:menu_dunning_configuration"
 msgid "Dunnings"
-msgstr "Cobranzas"
+msgstr "Izterjave"
 
 msgctxt "model:ir.ui.menu,name:menu_dunning_create"
 msgid "Create Dunnings"
-msgstr "Crear Cobros"
+msgstr "Izdelava izterjav"
 
 msgctxt "model:ir.ui.menu,name:menu_dunning_form"
 msgid "Dunnings"
-msgstr "Cobros"
+msgstr "Izterjave"
 
 msgctxt "model:ir.ui.menu,name:menu_dunning_procedure_form"
 msgid "Dunning Procedures"
-msgstr "Procedimientos de Cobro"
+msgstr "Postopki izterjav"
 
 msgctxt "model:ir.ui.menu,name:menu_dunnings"
 msgid "Dunnings"
-msgstr "Cobranzas"
+msgstr "Izterjave"
 
 msgctxt "model:res.group,name:group_dunning"
 msgid "Dunning"
-msgstr "Cobranzas"
+msgstr "Računovodstvo - izterjava"
 
 msgctxt "selection:account.dunning,state:"
 msgid "Done"
-msgstr "Realizado"
+msgstr "Zaključeno"
 
 msgctxt "selection:account.dunning,state:"
 msgid "Draft"
-msgstr "Borrador"
+msgstr "V pripravi"
 
 msgctxt "view:account.configuration:"
 msgid "Dunning"
-msgstr "Cobranzas"
-
-msgctxt "view:account.dunning.create.start:"
-msgid "Create Dunning"
-msgstr "Crear cobro"
+msgstr "Izterjava"
 
 msgctxt "view:account.dunning.create.start:"
 msgid "Create Dunning for date"
-msgstr "Crear cobro para la fecha"
-
-msgctxt "view:account.dunning.level:"
-msgid "Dunning Level"
-msgstr "Nivel de cobro"
-
-msgctxt "view:account.dunning.level:"
-msgid "dunning levels"
-msgstr "Niveles de cobro"
-
-msgctxt "view:account.dunning.procedure:"
-msgid "Dunning Procedure"
-msgstr "Procedimiento de cobro"
-
-msgctxt "view:account.dunning.procedure:"
-msgid "Dunning Procedures"
-msgstr "Procedimientos de cobro"
-
-msgctxt "view:account.dunning.process.start:"
-msgid "Process Dunning"
-msgstr "Procesar cobro"
+msgstr "Izterjava za datum"
 
 msgctxt "view:account.dunning.process.start:"
 msgid "Process Dunning?"
-msgstr "¿Procesar cobro?"
-
-msgctxt "view:account.dunning:"
-msgid "Dunning"
-msgstr "Cobro"
-
-msgctxt "view:account.dunning:"
-msgid "Dunnings"
-msgstr "Cobros"
+msgstr "Obdelava izterjave?"
 
 msgctxt "view:party.party:"
 msgid "Dunning"
-msgstr "Cobro"
+msgstr "Izterjava"
 
 msgctxt "wizard_button:account.dunning.create,start,create_:"
 msgid "Create"
-msgstr "Crear"
+msgstr "Izdelaj"
 
 msgctxt "wizard_button:account.dunning.create,start,end:"
 msgid "Cancel"
-msgstr "Cancelar"
+msgstr "Prekliči"
 
 msgctxt "wizard_button:account.dunning.process,start,end:"
 msgid "Cancel"
-msgstr "Cancelar"
+msgstr "Prekliči"
 
 msgctxt "wizard_button:account.dunning.process,start,process:"
 msgid "Process"
-msgstr "Procesar"
+msgstr "Obdelava"
