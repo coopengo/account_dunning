@@ -221,6 +221,7 @@ class Dunning(ModelSQL, ModelView):
 
         if date is None:
             date = Date.today()
+        # JMO : Split method in two for easier overriding
         cls.update_dunnings(date)
         lines = MoveLine.search(cls._overdue_line_domain(date))
         cls._generate_dunnings(date, lines)
