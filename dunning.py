@@ -8,7 +8,6 @@ from sql import Null
 from trytond.model import Model, ModelView, ModelSQL, fields, Unique, \
     sequence_ordered
 from trytond.pyson import If, Eval
-from trytond import backend
 from trytond.transaction import Transaction
 from trytond.wizard import Wizard, StateView, StateAction, StateTransition, \
     Button
@@ -37,9 +36,8 @@ class Level(sequence_ordered(), ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
         cursor = Transaction().connection.cursor()
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
         sql_table = cls.__table__()
 
         super(Level, cls).__register__(module_name)
@@ -102,7 +100,8 @@ class Dunning(ModelSQL, ModelView):
         help="Check to block further levels of the procedure.")
     state = fields.Selection([
             ('draft', 'Draft'),
-            ('done', 'Done'),
+            ('waiting', "Waiting"),
+            ('final', "Final"),
             ], 'State', readonly=True)
     active = fields.Function(fields.Boolean('Active'), 'get_active',
         searcher='search_active')
@@ -134,6 +133,17 @@ class Dunning(ModelSQL, ModelView):
                 'Line can be used only once on dunning.'),
             ]
         cls._active_field = 'active'
+
+    @classmethod
+    def __register__(cls, module):
+        dunning = cls.__table__()
+        super().__register__(module)
+        cursor = Transaction().connection.cursor()
+
+        # Migration from 4.8: rename done state into waiting
+        cursor.execute(*dunning.update(
+                [dunning.state], ['waiting'],
+                where=dunning.state == 'done'))
 
     @staticmethod
     def default_company():
@@ -211,25 +221,33 @@ class Dunning(ModelSQL, ModelView):
     def update_dunnings(cls, date):
         set_level = defaultdict(list)
         for dunning in cls.search([
-                    ('state', '=', 'done'),
+                    ('state', '=', 'waiting'),
                     ('blocked', '=', False),
                     ]):
             procedure = dunning.procedure
             levels = procedure.levels
             levels = levels[levels.index(dunning.level) + 1:]
-            for level in levels:
-                if level.test(dunning.line, date):
-                    break
+            if levels:
+                for level in levels:
+                    if level.test(dunning.line, date):
+                        break
+                else:
+                    level = dunning.level
+                if level != dunning.level:
+                    set_level[level].append(dunning)
             else:
-                level = dunning.level
-            if level != dunning.level:
-                set_level[level].append(dunning)
+                set_level[None].append(dunning)
         to_write = []
         for level, dunnings in set_level.items():
-            to_write.extend((dunnings, {
-                        'level': level.id,
-                        'state': 'draft',
-                        }))
+            if level:
+                to_write.extend((dunnings, {
+                            'level': level.id,
+                            'state': 'draft',
+                            }))
+            else:
+                to_write.extend((dunnings, {
+                            'state': 'final',
+                            }))
         if to_write:
             cls.write(*to_write)
 
@@ -269,8 +287,9 @@ class Dunning(ModelSQL, ModelView):
 
     @classmethod
     def process(cls, dunnings):
-        cls.write([d for d in dunnings if not d.blocked], {
-                'state': 'done',
+        cls.write([d for d in dunnings
+                if not d.blocked and d.state == 'draft'], {
+                'state': 'waiting',
                 })
 
 
