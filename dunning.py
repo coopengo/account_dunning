@@ -25,6 +25,11 @@ class Procedure(ModelSQL, ModelView):
         help="The main identifier of the Dunning Procedure.")
     levels = fields.One2Many('account.dunning.level', 'procedure', 'Levels')
 
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls._order.insert(0, ('name', 'ASC'))
+
 
 class Level(sequence_ordered(), ModelSQL, ModelView):
     'Account Dunning Level'
@@ -81,7 +86,7 @@ class Dunning(ModelSQL, ModelView):
     line = fields.Many2One('account.move.line', 'Line', required=True,
         help="The receivable line to dun for.",
         domain=[
-            ('account.kind', '=', 'receivable'),
+            ('account.type.receivable', '=', True),
             ('account.company', '=', Eval('company', -1)),
             ['OR',
                 ('debit', '>', 0),
@@ -130,7 +135,7 @@ class Dunning(ModelSQL, ModelView):
         table = cls.__table__()
         cls._sql_constraints = [
             ('line_unique', Unique(table, table.line),
-                'Line can be used only once on dunning.'),
+                'account_dunning.msg_dunning_line_unique'),
             ]
         cls._active_field = 'active'
 
@@ -206,7 +211,7 @@ class Dunning(ModelSQL, ModelView):
     @classmethod
     def _overdue_line_domain(cls, date):
         return [
-            ('account.kind', '=', 'receivable'),
+            ('account.type.receivable', '=', True),
             ('dunnings', '=', None),
             ('maturity_date', '<=', date),
             ['OR',
