@@ -5,7 +5,6 @@ from trytond.model import ModelSQL, ValueMixin, fields
 from trytond.pool import PoolMeta, Pool
 from trytond.tools.multivalue import migrate_property
 
-__all__ = ['Party', 'PartyDunningProcedure']
 dunning_procedure = fields.Many2One(
     'account.dunning.procedure', "Dunning Procedure")
 
@@ -34,8 +33,7 @@ class PartyDunningProcedure(ModelSQL, ValueMixin):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
-        exist = TableHandler.table_exist(cls._table)
+        exist = backend.TableHandler.table_exist(cls._table)
 
         super(PartyDunningProcedure, cls).__register__(module_name)
 
