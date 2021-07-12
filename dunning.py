@@ -37,7 +37,9 @@ class Level(sequence_ordered(), ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        cursor = Transaction().connection.cursor()
+        transaction = Transaction()
+        cursor = transaction.connection.cursor()
+        update = transaction.connection.cursor()
         table = cls.__table_handler__(module_name)
         sql_table = cls.__table__()
 
@@ -47,9 +49,9 @@ class Level(sequence_ordered(), ModelSQL, ModelView):
         if table.column_exist('days'):
             cursor.execute(*sql_table.select(sql_table.id, sql_table.days,
                     where=sql_table.days != Null))
-            for id_, days in cursor.fetchall():
+            for id_, days in cursor:
                 overdue = datetime.timedelta(days)
-                cursor.execute(*sql_table.update(
+                update.execute(*sql_table.update(
                         [sql_table.overdue],
                         [overdue],
                         where=sql_table.id == id_))
@@ -75,10 +77,7 @@ class Dunning(ModelSQL, ModelView):
     __name__ = 'account.dunning'
     company = fields.Many2One('company.company', 'Company', required=True,
         help="Make the dunning belong to the company.",
-        select=True, domain=[
-            ('id', If(Eval('context', {}).contains('company'), '=', '!='),
-                Eval('context', {}).get('company', -1)),
-            ],
+        select=True,
         states=_STATES, depends=_DEPENDS)
     line = fields.Many2One('account.move.line', 'Line', required=True,
         help="The receivable line to dun for.",
@@ -107,7 +106,12 @@ class Dunning(ModelSQL, ModelView):
             ], 'State', readonly=True)
     active = fields.Function(fields.Boolean('Active'), 'get_active',
         searcher='search_active')
-    party = fields.Function(fields.Many2One('party.party', 'Party'),
+    party = fields.Function(fields.Many2One(
+            'party.party', 'Party',
+            context={
+                'company': Eval('company', -1),
+                },
+            depends=['company']),
         'get_line_field', searcher='search_line_field')
     amount = fields.Function(fields.Numeric('Amount',
             digits=(16, Eval('currency_digits', 2)),
@@ -222,10 +226,13 @@ class Dunning(ModelSQL, ModelView):
     @classmethod
     def update_dunnings(cls, date):
         set_level = defaultdict(list)
-        for dunning in cls.search([
+        with Transaction().set_context(_check_access=True):
+            dunnings = cls.search([
                     ('state', '=', 'waiting'),
                     ('blocked', '=', False),
-                    ]):
+                    ])
+        dunnings = cls.browse(dunnings)
+        for dunning in dunnings:
             procedure = dunning.procedure
             levels = procedure.levels
             levels = levels[levels.index(dunning.level) + 1:]
@@ -263,7 +270,9 @@ class Dunning(ModelSQL, ModelView):
             date = Date.today()
         # JMO : Split method in two for easier overriding
         cls.update_dunnings(date)
-        lines = MoveLine.search(cls._overdue_line_domain(date))
+        with Transaction().set_context(_check_access=True):
+            lines = MoveLine.search(cls._overdue_line_domain(date))
+        lines = MoveLine.browse(lines)
         cls._generate_dunnings(date, lines)
 
     @classmethod
@@ -356,8 +365,5 @@ class ProcessDunning(Wizard):
             return 'end'
 
     def transition_process(self):
-        pool = Pool()
-        Dunning = pool.get('account.dunning')
-        dunnings = Dunning.browse(Transaction().context['active_ids'])
-        Dunning.process(dunnings)
+        self.model.process(self.records)
         return self.next_state('process')
